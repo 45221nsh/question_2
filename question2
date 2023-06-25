@@ -1,0 +1,36 @@
+#include <iostream>
+#include <unordered_map>
+
+int firstUniqChar(std::string s) {
+    std::unordered_map<char, int> charCount;
+
+    // Count the frequency of each character
+    for (char c : s) {
+        charCount[c]++;
+    }
+
+    // Find the first non-repeating character and return its index
+    for (int i = 0; i < s.length(); i++) {
+        if (charCount[s[i]] == 1) {
+            return i;
+        }
+    }
+
+    return -1; // Return -1 if no non-repeating character found
+}
+
+int main() {
+    std::string s1 = "leetcode";
+    int index1 = firstUniqChar(s1);
+    std::cout << "Output: " << index1 << std::endl;
+
+    std::string s2 = "loveleetcode";
+    int index2 = firstUniqChar(s2);
+    std::cout << "Output: " << index2 << std::endl;
+
+    std::string s3 = "aabb";
+    int index3 = firstUniqChar(s3);
+    std::cout << "Output: " << index3 << std::endl;
+
+    return 0;
+}
